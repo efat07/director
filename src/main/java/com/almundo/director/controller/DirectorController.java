@@ -35,12 +35,21 @@ public class DirectorController {
         	segundosDemora = tiempoLlamada - segundosDemora;
         	segundosDemora = Math.abs(segundosDemora);
         }
+        
+        int llamadasEnCola = contarLlamadasEnCola();
+        
     	DirectorResponse directorResponse = new DirectorResponse();
     	if(director.getLlamada() != null) {
     		directorResponse.setIdLlamada(director.getLlamada().getLlamadaId());
     	}
     	directorResponse.setDuracionAtendiendo(segundosDemora);
-    	directorResponse.setCantidadEnCola(0);
+    	directorResponse.setCantidadEnCola(llamadasEnCola);
     	return ResponseEntity.ok(directorResponse);
     }
+    
+    private int contarLlamadasEnCola() {
+		int resultado = 0;
+		//Realizar el conteo de los mensajes en la cola de mensajeria que representaría la cantidad de llamadas en espera
+		return resultado;
+	}
 }
